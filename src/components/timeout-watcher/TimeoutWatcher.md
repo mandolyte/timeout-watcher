@@ -7,38 +7,34 @@
 
 ### Complex coding example:
 
-```js
-import * as tw from './timeout-watcher';
+Please ignore the error shown and open the console window (Ctrl-Shift-J) to view the console messages.
 
-function getRandomArbitrary(min: number, max:number) {
+```ts
+import timeoutWatcher from './timeout-watcher';
+
+function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
 const watchFunctionTest = () => {
     const x = getRandomArbitrary(0,100);
     if ( x >= 80 ) {
-    setValue(<div>It is done</div>)
-    return true;
+        console.log("Done: watch function returns true")
+        return true;
     }
+    console.log("Not Done: watch function returns false")
     return false;
 }
 
 const timeoutFunctionTest = () => {
-    setValue(<div>It timed out!</div>)
+    console.log("Timeout!")
 }
 
+const interval = 1000
+const iterations = 10
+console.log("interval,iterations",interval,iterations)
+timeoutWatcher(interval,iterations,watchFunctionTest,timeoutFunctionTest);
+console.log("timeoutWatcher() has completed")
 
-console.log("_interval,_iterations",_interval,_iterations)
-useEffect( () => {
-    const fetchData = async () => {
-    await timeoutWatcher(_interval,_iterations,watchFunctionTest,timeoutFunctionTest);
-    };
-    fetchData();
-},[]); // eslint-disable-line react-hooks/exhaustive-deps
-// the parameter [] allows the effect to skip if value unchanged
-// an empty [] will only update on mount of component
-
-
-<span>    {value}    </span>
 
 ```
